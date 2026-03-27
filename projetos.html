@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos — DevName</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header id="site-header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-dot"></span>
+                DevName
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="toggler-bar"></span>
+                <span class="toggler-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="projetos.html">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    <div class="container">
+        <div class="section-label reveal-up">// projetos</div>
+        <h1 class="page-title reveal-up delay-1">Trabalhos<br>selecionados.</h1>
+        <p class="page-sub reveal-up delay-2">Uma curadoria dos projetos que mais me orgulho.</p>
+    </div>
+</section>
+
+<!-- PROJETOS -->
+<section class="projetos-section">
+    <div class="container">
+
+        <!-- Projeto destacado -->
+        <div class="projeto-featured reveal-up">
+            <div class="projeto-featured-meta">
+                <span class="projeto-num">01</span>
+                <span class="projeto-tag">Full Stack</span>
+            </div>
+            <div class="projeto-featured-body">
+                <h2>Sistema Inteligente de Monitoramento Agrícola</h2>
+                <p>Um sistema de baixo custo baseado em IoT e Visão Computacional para monitoramento de microclima e detecção automática de pragas.</p>
+                <div class="projeto-techs">
+                    <span>Em Desenvolvimento</span><span>IA</span><span>Computer Vision</span><span>IOT</span><span>Python</span><span>HTML</span>
+                </div>
+            </div>
+            <div class="projeto-featured-actions">
+                <a href="tcc.html" class="btn-primary-custom">Ver projeto <span class="arrow">→</span></a>
+                <a href="https://github.com/feedieback/TCC" class="btn-ghost-custom">GitHub</a>
+            </div>
+        </div>
+
+        <!-- Grid de projetos -->
+        <div class="projetos-grid">
+
+            <div class="projeto-card reveal-up">
+                <div class="projeto-card-header">
+                    <span class="projeto-num">02</span>
+                    <span class="projeto-tag">Full Stack</span>
+                </div>
+                <h3>Detecção de Mosca-Branca (Trialeurodes vaporariorum)</h3>
+                <p>Um sistema de Visão Computacional otimizado para a detecção de pequenos insetos em armadilhas adesivas em cultivos de tomate.</p>
+                <div class="projeto-techs">
+                    <span>Concluido</span><span>Python</span><span>YOLOv8</span><span>OpenCV</span>
+                </div>
+                <div class="projeto-card-footer">
+                    <a href="https://github.com/feedieback/Deteccao-de-Moscas-Brancas" class="link-arrow">Ver projeto →</a>
+                </div>
+            </div>
+
+            <div class="projeto-card reveal-up delay-1">
+                <div class="projeto-card-header">
+                    <span class="projeto-num">03</span>
+                    <span class="projeto-tag">Full Stack</span>
+                </div>
+                <h3>Sistema de Detecção de Fadiga de Motoristas</h3>
+                <p>Este projeto implementa um sistema em Python que detecta automaticamente sinais de fadiga em motoristas, utilizando visão computacional, redes neurais convolucionais (CNN) e lógica fuzzy tipo 2.</p>
+                <div class="projeto-techs">
+                    <span>Python</span><span>Docker</span><span>AWS</span>
+                </div>
+                <div class="projeto-card-footer">
+                    <a href="#" class="link-arrow">Ver projeto →</a>
+                </div>
+            </div>
+
+            <div class="projeto-card reveal-up delay-2">
+                <div class="projeto-card-header">
+                    <span class="projeto-num">04</span>
+                    <span class="projeto-tag">Mobile</span>
+                </div>
+                <h3>Simulador de Sistema Operacional</h3>
+                <p>Este projeto é um simulador de sistema operacional desenvolvido em C++, com uma interface de linha de comando que permite gerenciar: Arquivos (sistema de arquivos simples), Memória (com alocação dinâmica e blocos livres), Processos (com filas e escalonamento básico), Entrada e Saída (simulada)</p>
+                <div class="projeto-techs">
+                    <span>React Native</span>
+                </div>
+                <div class="projeto-card-footer">
+                    <a href="#" class="link-arrow">Ver projeto →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-inner reveal-up">
+            <h2>Tem um projeto em mente?</h2>
+            <p>Vamos trabalhar juntos e transformar sua ideia em realidade.</p>
+            <a href="contato.html" class="btn-primary-custom">Entrar em contato</a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">DevName</div>
+            <div class="footer-links">
+                <a href="projetos.html">Projetos</a>
+                <a href="contato.html">Contato</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
+            <div class="footer-copy">© 2025 — Feito com ♥</div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
