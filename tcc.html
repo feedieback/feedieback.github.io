@@ -76,16 +76,53 @@
             margin: 0;
         }
 
-        /* ── PREVIEW / GALERIA ──────────────────── */
+        /* ── PREVIEW / CARROSSEL ────────────────── */
         .preview-section {
             padding: 80px 0;
         }
 
-        .preview-placeholder {
+        /* Container do carrossel */
+        .preview-carousel {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
+            overflow: hidden;
             aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        /* Slides */
+        .carousel-slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Imagem dentro do slide */
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Placeholder (quando não há imagem) */
+        .carousel-empty {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -93,16 +130,108 @@
             gap: 12px;
             color: var(--text-muted);
             font-size: 13px;
-            transition: border-color 0.2s ease;
         }
 
-        .preview-placeholder:hover {
-            border-color: var(--border-2);
-        }
-
-        .preview-placeholder .preview-icon {
+        .carousel-empty .preview-icon {
             font-size: 28px;
             opacity: 0.4;
+        }
+
+        /* Botões de navegação ‹ › */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(0,0,0,0.55);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #e8ead8;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            transition: background 0.2s ease;
+            user-select: none;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(168,196,74,0.3);
+        }
+
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        /* Dots indicadores */
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent, #a8c44a);
+            transform: scale(1.2);
+        }
+
+        /* Label e botão de upload embaixo */
+        .preview-upload-area {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .preview-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: var(--mono, monospace);
+            letter-spacing: 0.04em;
+        }
+
+        .upload-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(168,196,74,0.35);
+            background: rgba(168,196,74,0.06);
+            color: var(--text-dim, #b8baa8);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--mono, monospace);
+            letter-spacing: 0.03em;
+        }
+
+        .upload-btn:hover {
+            background: rgba(168,196,74,0.14);
+            border-color: rgba(168,196,74,0.6);
+            color: #e8ead8;
+        }
+
+        .upload-btn input[type="file"] {
+            display: none;
         }
 
         /* ── CTA SECTION ────────────────────────── */
@@ -329,18 +458,89 @@
         <div class="section-label reveal-up">// preview</div>
 
         <div class="row g-4">
+
+            <!-- ── CARROSSEL 1: Dashboard ── -->
             <div class="col-md-6 reveal-up">
-                <div class="preview-placeholder">
-                    <span class="preview-icon">🖥</span>
-                    <span>Dashboard / Interface</span>
+                <div class="preview-carousel" id="carousel-dashboard">
+                    <div class="carousel-slides" id="slides-dashboard">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active" id="slide-dashboard-0">
+                            <div class="carousel-empty">
+                                <span class="preview-icon">🖥</span>
+                                <span>Dashboard / Interface</span>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide" id="slide-dashboard-1">
+                            <div class="carousel-empty">
+                                <span class="preview-icon">🖥</span>
+                                <span>Dashboard / Interface 2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botões navegação -->
+                    <button class="carousel-btn prev" onclick="changeSlide('dashboard', -1)">&#8249;</button>
+                    <button class="carousel-btn next" onclick="changeSlide('dashboard', 1)">&#8250;</button>
+
+                    <!-- Dots -->
+                    <div class="carousel-dots" id="dots-dashboard">
+                        <span class="carousel-dot active" onclick="goToSlide('dashboard', 0)"></span>
+                        <span class="carousel-dot" onclick="goToSlide('dashboard', 1)"></span>
+                    </div>
+                </div>
+
+                <!-- Área de upload -->
+                <div class="preview-upload-area">
+                    <span class="preview-label">// dashboard</span>
+                    <label class="upload-btn">
+                        ↑ Carregar imagens
+                        <input type="file" accept="image/*" multiple onchange="loadImages('dashboard', this)">
+                    </label>
                 </div>
             </div>
+
+            <!-- ── CARROSSEL 2: Gráficos ── -->
             <div class="col-md-6 reveal-up delay-1">
-                <div class="preview-placeholder">
-                    <span class="preview-icon">📊</span>
-                    <span>Gráficos / Dados em tempo real</span>
+                <div class="preview-carousel" id="carousel-graficos">
+                    <div class="carousel-slides" id="slides-graficos">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active" id="slide-graficos-0">
+                            <div class="carousel-empty">
+                                <span class="preview-icon">📊</span>
+                                <span>Gráficos / Dados em tempo real</span>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide" id="slide-graficos-1">
+                            <div class="carousel-empty">
+                                <span class="preview-icon">📊</span>
+                                <span>Gráficos / Dados em tempo real 2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botões navegação -->
+                    <button class="carousel-btn prev" onclick="changeSlide('graficos', -1)">&#8249;</button>
+                    <button class="carousel-btn next" onclick="changeSlide('graficos', 1)">&#8250;</button>
+
+                    <!-- Dots -->
+                    <div class="carousel-dots" id="dots-graficos">
+                        <span class="carousel-dot active" onclick="goToSlide('graficos', 0)"></span>
+                        <span class="carousel-dot" onclick="goToSlide('graficos', 1)"></span>
+                    </div>
+                </div>
+
+                <!-- Área de upload -->
+                <div class="preview-upload-area">
+                    <span class="preview-label">// gráficos</span>
+                    <label class="upload-btn">
+                        ↑ Carregar imagens
+                        <input type="file" accept="image/*" multiple onchange="loadImages('graficos', this)">
+                    </label>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -382,6 +582,62 @@
 
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
+
+<script>
+    // ── Estado dos carrosseis ──────────────────────────────────────────────────
+    const carouselState = {
+        dashboard: { current: 0, total: 2 },
+        graficos:  { current: 0, total: 2 }
+    };
+
+    // ── Navegar com setas ──────────────────────────────────────────────────────
+    function changeSlide(id, direction) {
+        const state = carouselState[id];
+        state.current = (state.current + direction + state.total) % state.total;
+        updateCarousel(id);
+    }
+
+    // ── Ir para slide específico ───────────────────────────────────────────────
+    function goToSlide(id, index) {
+        carouselState[id].current = index;
+        updateCarousel(id);
+    }
+
+    // ── Atualizar visual do carrossel ──────────────────────────────────────────
+    function updateCarousel(id) {
+        const { current, total } = carouselState[id];
+
+        for (let i = 0; i < total; i++) {
+            const slide = document.getElementById(`slide-${id}-${i}`);
+            if (slide) slide.classList.toggle('active', i === current);
+        }
+
+        const dots = document.querySelectorAll(`#dots-${id} .carousel-dot`);
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+    }
+
+    // ── Carregar imagens do disco e inserir nos slides ─────────────────────────
+    function loadImages(id, input) {
+        const files = Array.from(input.files).slice(0, 2); // máximo 2 imagens
+        if (!files.length) return;
+
+        files.forEach((file, i) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const slide = document.getElementById(`slide-${id}-${i}`);
+                if (!slide) return;
+
+                // Substitui o conteúdo do slide pela imagem
+                slide.innerHTML = `<img src="${e.target.result}" alt="Preview ${i + 1}">`;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Volta para o primeiro slide após carregar
+        carouselState[id].current = 0;
+        updateCarousel(id);
+    }
+</script>
 
 </body>
 </html>
