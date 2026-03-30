@@ -417,43 +417,25 @@
 
         <div class="row g-4">
 
-            <!-- ── CARROSSEL 1: Dashboard ── -->
+            <!-- ── IMAGEM ESTÁTICA: Dashboard ── -->
             <div class="col-md-6 reveal-up">
-                <div class="preview-carousel" id="carousel-dashboard">
-                    <div class="carousel-slides" id="slides-dashboard">
-                        <!-- Slide 1 -->
-                        <div class="carousel-slide active" id="slide-dashboard-0">
-                            <img src="assets/dashboard.png" alt="Dashboard - Imagem 1">
-                        </div>
-                    </div>
-
-                    <!-- Botões navegação -->
-                    <button class="carousel-btn prev" onclick="changeSlide('dashboard', -1)">&#8249;</button>
-                    <button class="carousel-btn next" onclick="changeSlide('dashboard', 1)">&#8250;</button>
-
-                    <!-- Dots -->
-                    <div class="carousel-dots" id="dots-dashboard">
-                        <span class="carousel-dot active" onclick="goToSlide('dashboard', 0)"></span>
-                        <span class="carousel-dot" onclick="goToSlide('dashboard', 1)"></span>
-                    </div>
+                <div class="preview-carousel">
+                    <img src="assets/dashboard.png" alt="Dashboard / Interface" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </div>
-
             </div>
 
-            <!-- ── CARROSSEL 2: Gráficos ── -->
+            <!-- ── CARROSSEL 2: Gráficos (3 imagens) ── -->
             <div class="col-md-6 reveal-up delay-1">
                 <div class="preview-carousel" id="carousel-graficos">
                     <div class="carousel-slides" id="slides-graficos">
-                        <!-- Slide 1 -->
                         <div class="carousel-slide active" id="slide-graficos-0">
                             <img src="assets/val_batch1_pred.jpg" alt="Gráficos - Imagem 1">
                         </div>
-                        <!-- Slide 2 -->
                         <div class="carousel-slide" id="slide-graficos-1">
                             <img src="assets/pred_007_57665.jpg" alt="Gráficos - Imagem 2">
                         </div>
-                        <div class="carousel-slide" id="slide-graficos-1">
-                            <img src="assets/pred_013_57800.jpg" alt="Gráficos - Imagem 2">
+                        <div class="carousel-slide" id="slide-graficos-2">
+                            <img src="assets/pred_013_57800.jpg" alt="Gráficos - Imagem 3">
                         </div>
                     </div>
 
@@ -465,9 +447,9 @@
                     <div class="carousel-dots" id="dots-graficos">
                         <span class="carousel-dot active" onclick="goToSlide('graficos', 0)"></span>
                         <span class="carousel-dot" onclick="goToSlide('graficos', 1)"></span>
+                        <span class="carousel-dot" onclick="goToSlide('graficos', 2)"></span>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -515,8 +497,7 @@
 <script>
     // ── Estado dos carrosseis ──────────────────────────────────────────────────
     const carouselState = {
-        dashboard: { current: 0, total: 2 },
-        graficos:  { current: 0, total: 2 }
+        graficos: { current: 0, total: 3 }
     };
 
     // ── Navegar com setas ──────────────────────────────────────────────────────
