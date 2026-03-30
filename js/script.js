@@ -49,16 +49,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 const featureData = {
     1: {
-        text: "Sistema com OpenCV para análise visual em tempo real.",
-        img: "assets/visao.jpg"
-    },
-    2: {
-        text: "Sensores IoT conectados via MQTT para coleta contínua.",
+        title: "Módulo 1 — Monitoramento de Solo e Ambiente",
+        text: "Coleta de dados vitais como umidade, pH e condutividade elétrica do solo, além de temperatura e umidade do ar. O módulo é baseado em microcontrolador ESP32 e sensores capacitivos, garantindo leituras precisas e contínuas do microclima agrícola.",
         img: "assets/iot.jpg"
     },
+    2: {
+        title: "Módulo 2 — Detecção Automática de Pragas",
+        text: "Armadilha fotográfica inteligente que utiliza Visão Computacional para identificar e quantificar pragas em tempo real. A detecção é realizada por uma rede neural YOLOv8s integrada ao Raspberry Pi, permitindo respostas rápidas e automação de alertas.",
+        img: "assets/pred_018_58059.jpg"
+    },
     3: {
-        text: "Processamento inteligente de dados e automação.",
-        img: "assets/analise.jpg"
+        title: "Módulo 3 — Análise da Saúde da Vegetação",
+        text: "Monitoramento por câmeras PTZ para análise da saúde macroscópica da lavoura através do espectro RGB. Gera mapas de saúde da vegetação para correlação visual com os dados coletados pelos sensores, facilitando a tomada de decisão agronômica.",
+        img: ""
     }
 };
 
@@ -83,12 +86,11 @@ document.querySelectorAll(".feature-card").forEach(card => {
                 <div class="feature-expand-inner">
 
                     <div>
+                        <h4>${featureData[id].title}</h4>
                         <p>${featureData[id].text}</p>
                     </div>
 
-                    <div>
-                        <img src="${featureData[id].img}" alt="">
-                    </div>
+                    ${featureData[id].img ? `<div><img src="${featureData[id].img}" alt="${featureData[id].title}"></div>` : ''}
 
                 </div>
             </div>

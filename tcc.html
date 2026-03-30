@@ -3,270 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Monitoramento — Victor.Dev</title>
+    <title>Victor.Dev\Projeto.TCC</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <style>
-        /* ── FEATURE CARDS ──────────────────────── */
-        .features-section {
-            padding: 80px 0;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 40px 36px;
-            height: 100%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--border-2);
-            background: var(--surface-2);
-            transform: translateY(-4px);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(168,196,74,0.08);
-            border: 1px solid rgba(168,196,74,0.2);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h5 {
-            font-family: var(--serif);
-            font-size: 16px;
-            font-weight: 700;
-            color: #e8ead8;
-            letter-spacing: -0.02em;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 14px;
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        /* ── PREVIEW / CARROSSEL ────────────────── */
-        .preview-section {
-            padding: 80px 0;
-        }
-
-        /* Container do carrossel */
-        .preview-carousel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            position: relative;
-        }
-
-        /* Slides */
-        .carousel-slides {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Imagem dentro do slide */
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Placeholder (quando não há imagem) */
-        .carousel-empty {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .carousel-empty .preview-icon {
-            font-size: 28px;
-            opacity: 0.4;
-        }
-
-        /* Botões de navegação ‹ › */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: rgba(0,0,0,0.55);
-            border: 1px solid rgba(255,255,255,0.12);
-            color: #e8ead8;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
-            line-height: 1;
-            transition: background 0.2s ease;
-            user-select: none;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(168,196,74,0.3);
-        }
-
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
-
-        /* Dots indicadores */
-        .carousel-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 6px;
-            z-index: 10;
-        }
-
-        .carousel-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--accent, #a8c44a);
-            transform: scale(1.2);
-        }
-
-
-        /* ── CTA SECTION ────────────────────────── */
-        .projeto-cta {
-            padding: 80px 0 120px;
-        }
-
-        .projeto-cta-inner {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-top: 2px solid var(--accent);
-            border-radius: 0;
-            padding: 80px;
-            text-align: center;
-            position: relative;
-        }
-
-        .projeto-cta-inner::before {
-            content: '/* fim do projeto */';
-            position: absolute;
-            top: 20px;
-            left: 28px;
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-muted);
-            letter-spacing: 0.06em;
-            opacity: 0.6;
-        }
-
-        .projeto-cta-inner h2 {
-            font-family: var(--serif);
-            font-size: clamp(26px, 3.5vw, 38px);
-            font-weight: 700;
-            color: #e8ead8;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-        }
-
-        .projeto-cta-inner p {
-            color: var(--text-dim);
-            font-size: 17px;
-            margin-bottom: 40px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ── BREADCRUMB ─────────────────────────── */
-        .breadcrumb-bar {
-            padding-top: 100px;
-            padding-bottom: 0;
-        }
-
-        .breadcrumb-bar .container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .breadcrumb-bar a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .breadcrumb-bar a:hover { color: var(--text); }
-
-        .breadcrumb-sep { opacity: 0.4; }
-
-        .breadcrumb-bar .current { color: var(--text-dim); }
-    </style>
 </head>
 
 <body>
@@ -315,11 +58,11 @@
         <div class="section-label reveal-up">// projeto em destaque</div>
         <h1 class="hero-title reveal-up delay-1">
             Sistema Inteligente<br>
-            de <em>Monitoramento</em><br>
-            Agrícola.
+            de <em>Monitoramento</em><br><em>
+            Agrícola.</em>
         </h1>
         <p class="page-sub reveal-up delay-2">
-            Plataforma IoT com visão computacional para análise ambiental e automação inteligente.
+            Desenvolvimento de um protótipo funcional de baixo custo para agricultura de precisão, integrando sensores IoT e Redes Neurais para otimização do manejo em pequenas propriedades.
         </p>
         <div class="hero-actions reveal-up delay-3" style="margin-top: 40px;">
             <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom">
@@ -344,13 +87,16 @@
                     Um sistema completo<br>para <em>monitoramento inteligente.</em>
                 </h2>
                 <p class="reveal-up delay-1">
-                    Este projeto integra sensores IoT, processamento de dados e visão computacional
-                    para monitorar ambientes agrícolas em tempo real, coletando métricas precisas
-                    de microclima e condições do solo.
+                    <em>O Problema:</em> Métodos tradicionais de inspeção visual e contagem manual de pragas são imprecisos e lentos, 
+                    resultando em decisões tardias.
                 </p>
                 <p class="reveal-up delay-2">
-                    Ele permite automação de decisões e geração de insights para otimização
-                    de produção — reduzindo desperdício e aumentando a eficiência operacional.
+                    <em>A Solução:</em> Uma solução modular que utiliza Edge Computing para processar dados localmente, 
+                    oferecendo ferramentas acessíveis que antes eram restritas a grandes produtores.
+                </p>
+                <p class="reveal-up delay-3">
+                    <em>Impacto Social:</em> Foco no fortalecimento da agricultura familiar, tornando-a mais 
+                    competitiva e sustentável através da tecnologia.
                 </p>
             </div>
 
@@ -379,25 +125,25 @@
 
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="1">
-                <div class="feature-icon">👁</div>
-                <h5>Visão Computacional</h5>
-                <p>Detecção e análise automática.</p>
+                <div class="feature-icon">🌱</div>
+                <h5>Monitoramento de Solo e Ambiente</h5>
+                <p>Detecção e análise automática da qualidade do solo e ambiente.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="2">
-                <div class="feature-icon">📡</div>
-                <h5>IoT Integrado</h5>
-                <p>Coleta de dados em tempo real.</p>
+                <div class="feature-icon">🐜</div>
+                <h5>Detecção Automática de Pragas</h5>
+                <p>Identificação e contagem automática de pragas através de visão computacional.    </p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="3">
-                <div class="feature-icon">⚡</div>
-                <h5>Análise Inteligente</h5>
-                <p>Processamento de dados.</p>
+                <div class="feature-icon">✙</div>
+                <h5>Análise da Saúde da Vegetação</h5>
+                <p>Monitoramento visual da saúde da vegetação e geração de mapas de saúde.</p>
             </div>
         </div>
 
