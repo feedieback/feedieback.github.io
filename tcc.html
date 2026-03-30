@@ -191,48 +191,6 @@
             transform: scale(1.2);
         }
 
-        /* Label e botão de upload embaixo */
-        .preview-upload-area {
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .preview-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-family: var(--mono, monospace);
-            letter-spacing: 0.04em;
-        }
-
-        .upload-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            padding: 6px 14px;
-            border-radius: 6px;
-            border: 1px solid rgba(168,196,74,0.35);
-            background: rgba(168,196,74,0.06);
-            color: var(--text-dim, #b8baa8);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: var(--mono, monospace);
-            letter-spacing: 0.03em;
-        }
-
-        .upload-btn:hover {
-            background: rgba(168,196,74,0.14);
-            border-color: rgba(168,196,74,0.6);
-            color: #e8ead8;
-        }
-
-        .upload-btn input[type="file"] {
-            display: none;
-        }
 
         /* ── CTA SECTION ────────────────────────── */
         .projeto-cta {
@@ -465,17 +423,11 @@
                     <div class="carousel-slides" id="slides-dashboard">
                         <!-- Slide 1 -->
                         <div class="carousel-slide active" id="slide-dashboard-0">
-                            <div class="carousel-empty">
-                                <span class="preview-icon">🖥</span>
-                                <span>Dashboard / Interface</span>
-                            </div>
+                            <img src="img/dashboard-1.png" alt="Dashboard - Imagem 1">
                         </div>
                         <!-- Slide 2 -->
                         <div class="carousel-slide" id="slide-dashboard-1">
-                            <div class="carousel-empty">
-                                <span class="preview-icon">🖥</span>
-                                <span>Dashboard / Interface 2</span>
-                            </div>
+                            <img src="img/dashboard-2.png" alt="Dashboard - Imagem 2">
                         </div>
                     </div>
 
@@ -490,14 +442,6 @@
                     </div>
                 </div>
 
-                <!-- Área de upload -->
-                <div class="preview-upload-area">
-                    <span class="preview-label">// dashboard</span>
-                    <label class="upload-btn">
-                        ↑ Carregar imagens
-                        <input type="file" accept="image/*" multiple onchange="loadImages('dashboard', this)">
-                    </label>
-                </div>
             </div>
 
             <!-- ── CARROSSEL 2: Gráficos ── -->
@@ -506,17 +450,11 @@
                     <div class="carousel-slides" id="slides-graficos">
                         <!-- Slide 1 -->
                         <div class="carousel-slide active" id="slide-graficos-0">
-                            <div class="carousel-empty">
-                                <span class="preview-icon">📊</span>
-                                <span>Gráficos / Dados em tempo real</span>
-                            </div>
+                            <img src="img/graficos-1.png" alt="Gráficos - Imagem 1">
                         </div>
                         <!-- Slide 2 -->
                         <div class="carousel-slide" id="slide-graficos-1">
-                            <div class="carousel-empty">
-                                <span class="preview-icon">📊</span>
-                                <span>Gráficos / Dados em tempo real 2</span>
-                            </div>
+                            <img src="img/graficos-2.png" alt="Gráficos - Imagem 2">
                         </div>
                     </div>
 
@@ -531,14 +469,6 @@
                     </div>
                 </div>
 
-                <!-- Área de upload -->
-                <div class="preview-upload-area">
-                    <span class="preview-label">// gráficos</span>
-                    <label class="upload-btn">
-                        ↑ Carregar imagens
-                        <input type="file" accept="image/*" multiple onchange="loadImages('graficos', this)">
-                    </label>
-                </div>
             </div>
 
         </div>
@@ -616,27 +546,7 @@
         dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
     }
 
-    // ── Carregar imagens do disco e inserir nos slides ─────────────────────────
-    function loadImages(id, input) {
-        const files = Array.from(input.files).slice(0, 2); // máximo 2 imagens
-        if (!files.length) return;
 
-        files.forEach((file, i) => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const slide = document.getElementById(`slide-${id}-${i}`);
-                if (!slide) return;
-
-                // Substitui o conteúdo do slide pela imagem
-                slide.innerHTML = `<img src="${e.target.result}" alt="Preview ${i + 1}">`;
-            };
-            reader.readAsDataURL(file);
-        });
-
-        // Volta para o primeiro slide após carregar
-        carouselState[id].current = 0;
-        updateCarousel(id);
-    }
 </script>
 
 </body>
