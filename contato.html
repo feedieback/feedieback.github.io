@@ -3,12 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato — DevName</title>
+    <title>Contato — Victor.Dev</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // 🔑 Cole sua Public Key aqui (painel EmailJS > Account > Public Key)
+        emailjs.init("kLiu8PbT5C7fTEibL");
+    </script>
+
+    <style>
+        /* ── VALIDAÇÃO INLINE ─────────────────── */
+        .form-input.is-invalid {
+            border-color: #f87171 !important;
+            box-shadow: 0 0 0 3px rgba(248,113,113,0.15) !important;
+        }
+        .form-input.is-valid {
+            border-color: #34d399 !important;
+            box-shadow: 0 0 0 3px rgba(52,211,153,0.12) !important;
+        }
+        .field-error {
+            font-size: 12px;
+            color: #f87171;
+            margin-top: 5px;
+            display: none;
+            animation: fadeSlideDown 0.2s ease;
+        }
+        .field-error.show { display: block; }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-4px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── BOTÃO ESTADOS ────────────────────── */
+        .btn-primary-custom { position: relative; overflow: hidden; }
+        .btn-primary-custom:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .btn-loading .btn-text  { opacity: 0; }
+        .btn-loading .btn-spinner { opacity: 1 !important; }
+
+        .btn-spinner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .spinner-ring {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── TOAST ────────────────────────────── */
+        .toast-container {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 24px;
+            border-radius: 14px;
+            border: 1px solid;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            max-width: 340px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: toastIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+        }
+        .toast.hide { animation: toastOut 0.3s ease forwards; }
+        .toast-success {
+            background: rgba(10, 24, 18, 0.97);
+            border-color: rgba(52,211,153,0.35);
+            color: #d1fae5;
+        }
+        .toast-error {
+            background: rgba(24, 10, 10, 0.97);
+            border-color: rgba(248,113,113,0.35);
+            color: #fee2e2;
+        }
+        .toast-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+        .toast-success .toast-icon { background: rgba(52,211,153,0.15); }
+        .toast-error   .toast-icon { background: rgba(248,113,113,0.15); }
+        .toast-body strong {
+            display: block;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .toast-body span { opacity: 0.7; font-size: 13px; }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(30px) scale(0.96); }
+            to   { opacity: 1; transform: translateX(0)    scale(1); }
+        }
+        @keyframes toastOut {
+            to   { opacity: 0; transform: translateX(20px) scale(0.95); }
+        }
+
+        @media (max-width: 480px) {
+            .toast-container { bottom: 16px; right: 16px; left: 16px; }
+            .toast { max-width: 100%; }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +150,7 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <span class="brand-dot"></span>
-                DevName
+                Victor.Dev
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="toggler-bar"></span>
@@ -65,21 +197,21 @@
                         <span class="contato-icon">✉</span>
                         <div>
                             <div class="link-label">E-mail</div>
-                            <div class="link-value">seu@email.com</div>
+                            <div class="link-value">contatovictor.dev855@gmail.com  </div>
                         </div>
                     </a>
-                    <a href="https://www.linkedin.com/in/victor-augusto-de-oliveira-435b703ab/?skipRedirect=true" target="_blank" class="contato-link-item">
+                    <a href="https://www.linkedin.com/in/victor-augusto-de-oliveira-435b703ab/" target="_blank" class="contato-link-item">
                         <span class="contato-icon">in</span>
                         <div>
                             <div class="link-label">LinkedIn</div>
-                            <div class="link-value">linkedin.com/in/seuusuario</div>
+                            <div class="link-value">victor-augusto-de-oliveira</div>
                         </div>
                     </a>
                     <a href="https://github.com" target="_blank" class="contato-link-item">
                         <span class="contato-icon">⌥</span>
                         <div>
                             <div class="link-label">GitHub</div>
-                            <div class="link-value">github.com/seuusuario</div>
+                            <div class="link-value">github.com/feedieback</div>
                         </div>
                     </a>
                 </div>
@@ -87,28 +219,42 @@
 
             <!-- Form -->
             <div class="contato-form-wrap reveal-up delay-1">
-                <form class="contato-form" id="contato-form">
+                <form class="contato-form" id="contato-form" novalidate>
+
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" class="form-input" placeholder="Seu nome completo">
+                            <label for="nome">Nome</label>
+                            <input id="nome" name="nome" type="text" class="form-input"
+                                placeholder="Seu nome completo" autocomplete="name">
+                            <div class="field-error" id="erro-nome">Por favor, informe seu nome.</div>
                         </div>
                         <div class="form-group">
-                            <label>E-mail</label>
-                            <input type="email" class="form-input" placeholder="seu@email.com">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" class="form-input"
+                                placeholder="seu@email.com" autocomplete="email">
+                            <div class="field-error" id="erro-email">Informe um e-mail válido.</div>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label>Assunto</label>
-                        <input type="text" class="form-input" placeholder="Sobre o que quer falar?">
+                        <label for="assunto">Assunto</label>
+                        <input id="assunto" name="assunto" type="text" class="form-input"
+                            placeholder="Sobre o que quer falar?">
+                        <div class="field-error" id="erro-assunto">Informe o assunto da mensagem.</div>
                     </div>
+
                     <div class="form-group">
-                        <label>Mensagem</label>
-                        <textarea class="form-input" rows="5" placeholder="Descreva seu projeto ou ideia..."></textarea>
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" class="form-input" rows="5"
+                            placeholder="Descreva seu projeto ou ideia..."></textarea>
+                        <div class="field-error" id="erro-mensagem">Por favor, escreva uma mensagem (mín. 10 caracteres).</div>
                     </div>
-                    <button type="submit" class="btn-primary-custom w-100">
-                        Enviar mensagem <span class="arrow">→</span>
+
+                    <button type="submit" class="btn-primary-custom w-100" id="btn-submit">
+                        <span class="btn-text">Enviar mensagem <span class="arrow">→</span></span>
+                        <span class="btn-spinner"><span class="spinner-ring"></span></span>
                     </button>
+
                 </form>
             </div>
 
@@ -124,14 +270,159 @@
                 <a href="projetos.html">Projetos</a>
                 <a href="contato.html">Contato</a>
                 <a href="https://github.com" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/public-profile/settings/?trk=d_flagship3_profile_self_view_public_profile&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BXgRd23iLSqK0qCcI4O39FA%3D%3D" target="_blank">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/victor-augusto-de-oliveira-435b703ab/" target="_blank">LinkedIn</a>
             </div>
             <div class="footer-copy">© 2025 — Feito com ♥</div>
         </div>
     </div>
 </footer>
 
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
+
+<script>
+// ================================================================
+//  ⚙️  CONFIGURAÇÃO — substitua pelos seus valores do EmailJS
+//  Painel: https://dashboard.emailjs.com
+// ================================================================
+const EMAILJS_SERVICE_ID  = "service_7h70nfp";   // aba "Email Services"
+const EMAILJS_TEMPLATE_ID = "template_afo6o2a";  // aba "Email Templates"
+// Public Key já inicializada no <head>
+
+// ================================================================
+//  TOAST
+// ================================================================
+function showToast(type, title, message) {
+    const container = document.getElementById("toast-container");
+    const icons = { success: "✓", error: "✕" };
+
+    const toast = document.createElement("div");
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+        <div class="toast-icon">${icons[type]}</div>
+        <div class="toast-body">
+            <strong>${title}</strong>
+            <span>${message}</span>
+        </div>
+    `;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("hide");
+        toast.addEventListener("animationend", () => toast.remove(), { once: true });
+    }, 5000);
+}
+
+// ================================================================
+//  VALIDAÇÃO
+// ================================================================
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const fields = [
+    {
+        id: "nome",
+        errorId: "erro-nome",
+        validate: v => v.trim().length >= 2
+    },
+    {
+        id: "email",
+        errorId: "erro-email",
+        validate: v => EMAIL_REGEX.test(v.trim())
+    },
+    {
+        id: "assunto",
+        errorId: "erro-assunto",
+        validate: v => v.trim().length >= 3
+    },
+    {
+        id: "mensagem",
+        errorId: "erro-mensagem",
+        validate: v => v.trim().length >= 10
+    }
+];
+
+function setFieldState(el, errorEl, valid) {
+    el.classList.toggle("is-valid",   valid);
+    el.classList.toggle("is-invalid", !valid);
+    errorEl.classList.toggle("show",  !valid);
+}
+
+function clearFieldState(el, errorEl) {
+    el.classList.remove("is-valid", "is-invalid");
+    errorEl.classList.remove("show");
+}
+
+function validateAll() {
+    let allValid = true;
+    fields.forEach(({ id, errorId, validate }) => {
+        const el  = document.getElementById(id);
+        const err = document.getElementById(errorId);
+        const ok  = validate(el.value);
+        setFieldState(el, err, ok);
+        if (!ok) allValid = false;
+    });
+    return allValid;
+}
+
+// Validação em tempo real (ao sair do campo e ao digitar após erro)
+fields.forEach(({ id, errorId, validate }) => {
+    const el  = document.getElementById(id);
+    const err = document.getElementById(errorId);
+
+    // Limpa ao digitar depois de marcar como inválido
+    el.addEventListener("input", () => {
+        if (el.classList.contains("is-invalid")) clearFieldState(el, err);
+    });
+
+    // Valida ao perder foco (só se tiver algo digitado)
+    el.addEventListener("blur", () => {
+        if (el.value.trim()) setFieldState(el, err, validate(el.value));
+    });
+});
+
+// ================================================================
+//  ENVIO
+// ================================================================
+document.getElementById("contato-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (!validateAll()) return;
+
+    const btn  = document.getElementById("btn-submit");
+    btn.disabled = true;
+    btn.classList.add("btn-loading");
+
+    const templateParams = {
+        from_name:  document.getElementById("nome").value.trim(),
+        email:      document.getElementById("email").value.trim(),
+        subject:    document.getElementById("assunto").value.trim(),
+        message:    document.getElementById("mensagem").value.trim(),
+        reply_to:   document.getElementById("email").value.trim(),
+    };
+
+    try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+        showToast("success", "Mensagem enviada!", "Obrigado! Responderei em breve.");
+
+        // Reseta o formulário
+        this.reset();
+        fields.forEach(({ id, errorId }) => {
+            clearFieldState(document.getElementById(id), document.getElementById(errorId));
+        });
+
+    } catch (error) {
+        console.error("EmailJS error:", error);
+        showToast("error", "Falha no envio", "Algo deu errado. Tente novamente ou me contate por e-mail.");
+    } finally {
+        btn.disabled = false;
+        btn.classList.remove("btn-loading");
+    }
+});
+</script>
+
 </body>
 </html>

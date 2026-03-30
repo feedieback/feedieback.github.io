@@ -47,6 +47,58 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+const featureData = {
+    1: {
+        text: "Sistema com OpenCV para análise visual em tempo real.",
+        img: "assets/visao.jpg"
+    },
+    2: {
+        text: "Sensores IoT conectados via MQTT para coleta contínua.",
+        img: "assets/iot.jpg"
+    },
+    3: {
+        text: "Processamento inteligente de dados e automação.",
+        img: "assets/analise.jpg"
+    }
+};
+
+const container = document.getElementById("feature-expand-container");
+
+document.querySelectorAll(".feature-card").forEach(card => {
+    card.addEventListener("click", () => {
+
+        const id = card.dataset.feature;
+
+        // Se clicar no mesmo, fecha
+        if (container.dataset.active == id) {
+            container.innerHTML = "";
+            container.dataset.active = "";
+            return;
+        }
+
+        container.dataset.active = id;
+
+        container.innerHTML = `
+            <div class="feature-expand-full">
+                <div class="feature-expand-inner">
+
+                    <div>
+                        <p>${featureData[id].text}</p>
+                    </div>
+
+                    <div>
+                        <img src="${featureData[id].img}" alt="">
+                    </div>
+
+                </div>
+            </div>
+        `;
+
+        // Scroll suave
+        container.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});
+
 // =============================================
 // FORM SUBMISSION FEEDBACK
 // =============================================

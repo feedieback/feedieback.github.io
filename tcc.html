@@ -3,28 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Principal</title>
-
+    <title>Sistema de Monitoramento — Victor.Dev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* ── FEATURE CARDS ──────────────────────── */
+        .features-section {
+            padding: 80px 0;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px 36px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-2);
+            background: var(--surface-2);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(168,196,74,0.08);
+            border: 1px solid rgba(168,196,74,0.2);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h5 {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 700;
+            color: #e8ead8;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ── PREVIEW / GALERIA ──────────────────── */
+        .preview-section {
+            padding: 80px 0;
+        }
+
+        .preview-placeholder {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 13px;
+            transition: border-color 0.2s ease;
+        }
+
+        .preview-placeholder:hover {
+            border-color: var(--border-2);
+        }
+
+        .preview-placeholder .preview-icon {
+            font-size: 28px;
+            opacity: 0.4;
+        }
+
+        /* ── CTA SECTION ────────────────────────── */
+        .projeto-cta {
+            padding: 80px 0 120px;
+        }
+
+        .projeto-cta-inner {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: 2px solid var(--accent);
+            border-radius: 0;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .projeto-cta-inner::before {
+            content: '/* fim do projeto */';
+            position: absolute;
+            top: 20px;
+            left: 28px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            opacity: 0.6;
+        }
+
+        .projeto-cta-inner h2 {
+            font-family: var(--serif);
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 700;
+            color: #e8ead8;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .projeto-cta-inner p {
+            color: var(--text-dim);
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── BREADCRUMB ─────────────────────────── */
+        .breadcrumb-bar {
+            padding-top: 100px;
+            padding-bottom: 0;
+        }
+
+        .breadcrumb-bar .container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb-bar a:hover { color: var(--text); }
+
+        .breadcrumb-sep { opacity: 0.4; }
+
+        .breadcrumb-bar .current { color: var(--text-dim); }
+    </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<header>
+<header id="site-header">
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">DevName</a>
-
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-dot"></span>
+                Victor.Dev
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="toggler-bar"></span>
                 <span class="toggler-bar"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
                     <li class="nav-item"><a class="nav-link nav-cta" href="contato.html">Contato</a></li>
                 </ul>
@@ -33,38 +208,44 @@
     </nav>
 </header>
 
-<!-- HERO DO PROJETO -->
-<section class="hero-section">
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <a href="projetos.html">Projetos</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="current">Sistema de Monitoramento</span>
+    </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
     <div class="hero-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
+        <div class="grid-overlay"></div>
     </div>
-
-    <div class="container hero-content">
-        <div class="hero-eyebrow reveal-up">Projeto em destaque</div>
-
+    <div class="container">
+        <div class="section-label reveal-up">// projeto em destaque</div>
         <h1 class="hero-title reveal-up delay-1">
             Sistema Inteligente<br>
-            de <em>Monitoramento</em>
+            de <em>Monitoramento</em><br>
+            Agrícola.
         </h1>
-
-        <p class="hero-sub reveal-up delay-2">
-            Plataforma IoT com visão computacional para análise ambiental<br>
-            e automação inteligente.
+        <p class="page-sub reveal-up delay-2">
+            Plataforma IoT com visão computacional para análise ambiental e automação inteligente.
         </p>
-
-        <div class="hero-actions reveal-up delay-3">
+        <div class="hero-actions reveal-up delay-3" style="margin-top: 40px;">
             <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom">
-                Ver no GitHub
+                Ver no GitHub <span class="arrow">→</span>
             </a>
             <a href="#detalhes" class="btn-ghost-custom">
-                Ver detalhes ↓
+                Ver detalhes <span class="arrow">↓</span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- DETALHES -->
+<!-- SOBRE O PROJETO -->
 <section id="detalhes" class="sobre-section">
     <div class="container">
 
@@ -73,98 +254,131 @@
         <div class="sobre-grid">
             <div class="sobre-text">
                 <h2 class="section-title reveal-up">
-                    Um sistema completo<br>
-                    para <em>monitoramento inteligente</em>
+                    Um sistema completo<br>para <em>monitoramento inteligente.</em>
                 </h2>
-
                 <p class="reveal-up delay-1">
                     Este projeto integra sensores IoT, processamento de dados e visão computacional
-                    para monitorar ambientes agrícolas em tempo real.
+                    para monitorar ambientes agrícolas em tempo real, coletando métricas precisas
+                    de microclima e condições do solo.
                 </p>
-
                 <p class="reveal-up delay-2">
-                    Ele permite análise de microclima, automação de decisões e geração de insights
-                    para otimização de produção.
+                    Ele permite automação de decisões e geração de insights para otimização
+                    de produção — reduzindo desperdício e aumentando a eficiência operacional.
                 </p>
             </div>
 
-            <div class="sobre-skills reveal-up delay-2">
+            <div class="sobre-skills reveal-up delay-1">
                 <div class="skill-chip">C++</div>
                 <div class="skill-chip">Python</div>
                 <div class="skill-chip">OpenCV</div>
                 <div class="skill-chip">IoT</div>
                 <div class="skill-chip">Docker</div>
+                <div class="skill-chip">MQTT</div>
+                <div class="skill-chip">Raspberry Pi</div>
             </div>
         </div>
 
     </div>
 </section>
 
-<!-- FEATURES -->
+<!-- FUNCIONALIDADES -->
 <section class="features-section">
     <div class="container">
 
-        <div class="section-label reveal-up">// funcionalidades</div>
+    <div class="section-label reveal-up">// funcionalidades</div>
 
-        <div class="row g-4">
+    <!-- CARDS -->
+    <div class="row g-4" id="features-cards">
 
-            <div class="col-md-4">
-                <div class="glass p-4 reveal-up">
-                    <h5>Visão Computacional</h5>
-                    <p>Detecção automática usando modelos treinados.</p>
-                </div>
+        <div class="col-md-4">
+            <div class="feature-card reveal-up" data-feature="1">
+                <div class="feature-icon">👁</div>
+                <h5>Visão Computacional</h5>
+                <p>Detecção e análise automática.</p>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="glass p-4 reveal-up delay-1">
-                    <h5>IoT Integrado</h5>
-                    <p>Coleta de dados em tempo real com sensores.</p>
-                </div>
+        <div class="col-md-4">
+            <div class="feature-card reveal-up" data-feature="2">
+                <div class="feature-icon">📡</div>
+                <h5>IoT Integrado</h5>
+                <p>Coleta de dados em tempo real.</p>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="glass p-4 reveal-up delay-2">
-                    <h5>Análise Inteligente</h5>
-                    <p>Processamento de dados para tomada de decisão.</p>
-                </div>
+        <div class="col-md-4">
+            <div class="feature-card reveal-up" data-feature="3">
+                <div class="feature-icon">⚡</div>
+                <h5>Análise Inteligente</h5>
+                <p>Processamento de dados.</p>
             </div>
-
         </div>
 
     </div>
+
+    <!-- EXPANSÃO FULL WIDTH -->
+    <div id="feature-expand-container"></div>
+
+</div>
 </section>
 
-<!-- GALERIA (opcional) -->
-<section class="sobre-section">
+<!-- PREVIEW -->
+<section class="preview-section">
     <div class="container">
+
         <div class="section-label reveal-up">// preview</div>
 
         <div class="row g-4">
             <div class="col-md-6 reveal-up">
-                <div class="glass p-3">Imagem / Dashboard</div>
+                <div class="preview-placeholder">
+                    <span class="preview-icon">🖥</span>
+                    <span>Dashboard / Interface</span>
+                </div>
             </div>
             <div class="col-md-6 reveal-up delay-1">
-                <div class="glass p-3">Gráficos / Interface</div>
+                <div class="preview-placeholder">
+                    <span class="preview-icon">📊</span>
+                    <span>Gráficos / Dados em tempo real</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="projeto-cta">
+    <div class="container">
+        <div class="projeto-cta-inner reveal-up">
+            <h2>Gostou do projeto?</h2>
+            <p>Explore o código ou entre em contato para conversar sobre ele.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom">
+                    Acessar repositório <span class="arrow">→</span>
+                </a>
+                <a href="contato.html" class="btn-ghost-custom">
+                    Vamos conversar
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="sobre-section text-center">
+<!-- FOOTER -->
+<footer class="site-footer">
     <div class="container">
-        <h2 class="section-title reveal-up">
-            Gostou do projeto?
-        </h2>
-        <a href="contato.html" class="btn-primary-custom reveal-up delay-1">
-                Acesse o Repositório
-        </a>
-
-        <a href="contato.html" class="btn-primary-custom reveal-up delay-1">
-            Vamos conversar
-        </a>
+        <div class="footer-inner">
+            <div class="footer-brand">Victor.Dev</div>
+            <div class="footer-links">
+                <a href="projetos.html">Projetos</a>
+                <a href="contato.html">Contato</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/victor-augusto-de-oliveira-435b703ab/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="footer-copy">© 2025 — Feito com ♥</div>
+        </div>
     </div>
-</section>
+</footer>
 
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
