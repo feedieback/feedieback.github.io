@@ -9,6 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    .lang-toggle-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.25);
+        color: inherit;
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 4px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        line-height: 1;
+    }
+    .lang-toggle-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+    .navbar.scrolled .lang-toggle-btn { border-color: rgba(0,0,0,0.2); }
+    .lang-item { display: flex; align-items: center; margin-left: 6px; }
+    </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#menu" data-bs-offset="80" tabindex="0">
@@ -29,10 +48,13 @@
 
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inicio" data-i18n="nav-inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre" data-i18n="nav-sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projetos.html" data-i18n="nav-projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html" data-i18n="nav-contato">Contato</a></li>
+                    <li class="nav-item lang-item">
+                        <button class="lang-toggle-btn" aria-label="Switch to English" title="Switch to English">EN</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -49,45 +71,45 @@
     </div>
 
     <div class="container hero-content">
-        <div class="hero-eyebrow reveal-up">Desenvolvedor Full Stack</div>
-        <h1 class="hero-title reveal-up delay-1">
+        <div class="hero-eyebrow reveal-up" data-i18n="hero-eyebrow">Desenvolvedor Full Stack</div>
+        <h1 class="hero-title reveal-up delay-1" data-i18n="hero-title">
             Trabalhando na <br><em>intersecção</em> entre <br>Hardware e <em>Inteligência.</em>
         </h1>
-        <p class="hero-sub reveal-up delay-2">
+        <p class="hero-sub reveal-up delay-2" data-i18n="hero-sub">
             Unindo IoT e Visão Computacional para resultados reais.<br>
             Engenharia aplicada à eficiência operacional.
         </p>
         <div class="hero-actions reveal-up delay-3">
-            <a href="projetos.html" class="btn-primary-custom">Ver projetos</a>
-            <a href="#sobre" class="btn-ghost-custom">Sobre mim <span class="arrow">↓</span></a>
+            <a href="projetos.html" class="btn-primary-custom" data-i18n="hero-btn-proj">Ver projetos</a>
+            <a href="#sobre" class="btn-ghost-custom" data-i18n="hero-btn-sobre">Sobre mim <span class="arrow">↓</span></a>
         </div>
     </div>
 
     <div class="hero-scroll-hint reveal-up delay-4">
         <div class="scroll-line"></div>
-        <span>role para baixo</span>
+        <span data-i18n="hero-scroll">role para baixo</span>
     </div>
 </section>
 
 <!-- SOBRE -->
 <section id="sobre" class="sobre-section">
     <div class="container">
-        <div class="section-label reveal-up">// sobre</div>
+        <div class="section-label reveal-up" data-i18n="label-sobre">// sobre</div>
 
         <div class="sobre-grid">
             <div class="sobre-text">
-                <h2 class="section-title reveal-up">
+                <h2 class="section-title reveal-up" data-i18n="sobre-title">
                     Olá, eu sou<br><em>Victor.</em>
                 </h2>
-                <p class="reveal-up delay-1">
+                <p class="reveal-up delay-1" data-i18n="sobre-p1">
                     Sou um estudante de Engenharia de Computação(11° Período ), dedicado a explorar como sistemas embarcados e algoritmos de 
                     Inteligência Artificial podem ser integrados para resolver problemas críticos do mundo real.
                 </p>
-                <p class="reveal-up delay-2">
+                <p class="reveal-up delay-2" data-i18n="sobre-p2">
                     Meu trabalho transita desde a baixa camada de hardware até a camada de 
                     aplicação inteligente, com foco em eficiência técnica e impacto social.
                 </p>
-                <a href="contato.html" class="btn-primary-custom reveal-up delay-3">Vamos conversar</a>
+                <a href="contato.html" class="btn-primary-custom reveal-up delay-3" data-i18n="sobre-btn">Vamos conversar</a>
             </div>
 
             <div class="sobre-skills reveal-up delay-1">
@@ -108,10 +130,10 @@
 <section id="competencias" class="competencias-section">
     <div class="container">
 
-        <div class="section-label reveal-up">// competências</div>
+        <div class="section-label reveal-up" data-i18n="label-comp">// competências</div>
 
         <div class="comp-header reveal-up delay-1">
-            <h2 class="section-title">
+            <h2 class="section-title" data-i18n="comp-title">
                 Áreas de <em>atuação</em><br>e domínio técnico.
             </h2>
         </div>
@@ -121,39 +143,39 @@
             <div class="comp-card reveal-up delay-1">
                 <div class="comp-number">01</div>
                 <div class="comp-content">
-                    <h4>Agricultura de Precisão e IoT</h4>
-                    <p>Sistemas modulares de monitoramento de baixo custo, integrando sensores de solo e clima via ESP32 com comunicação pelo protocolo MQTT.</p>
+                    <h4 data-i18n="comp-01-title">Agricultura de Precisão e IoT</h4>
+                    <p data-i18n="comp-01-p">Sistemas modulares de monitoramento de baixo custo, integrando sensores de solo e clima via ESP32 com comunicação pelo protocolo MQTT.</p>
                 </div>
             </div>
 
             <div class="comp-card reveal-up delay-2">
                 <div class="comp-number">02</div>
                 <div class="comp-content">
-                    <h4>Visão Computacional e IA</h4>
-                    <p>Detecção e classificação automática de pragas com redes neurais YOLOv8 otimizadas para Edge Computing em Raspberry Pi. Também explorei segurança veicular com IA para detecção de fadiga de motoristas.</p>
+                    <h4 data-i18n="comp-02-title">Visão Computacional e IA</h4>
+                    <p data-i18n="comp-02-p">Detecção e classificação automática de pragas com redes neurais YOLOv8 otimizadas para Edge Computing em Raspberry Pi. Também explorei segurança veicular com IA para detecção de fadiga de motoristas.</p>
                 </div>
             </div>
 
             <div class="comp-card reveal-up delay-3">
                 <div class="comp-number">03</div>
                 <div class="comp-content">
-                    <h4>Infraestrutura e Sistemas de Baixo Nível</h4>
-                    <p>Desenvolvimento e simulação de núcleos de Sistemas Operacionais, com experiência direta em gerenciamento de memória, processos, I/O e sistemas de arquivos.</p>
+                    <h4 data-i18n="comp-03-title">Infraestrutura e Sistemas de Baixo Nível</h4>
+                    <p data-i18n="comp-03-p">Desenvolvimento e simulação de núcleos de Sistemas Operacionais, com experiência direta em gerenciamento de memória, processos, I/O e sistemas de arquivos.</p>
                 </div>
             </div>
 
             <div class="comp-card reveal-up delay-4">
                 <div class="comp-number">04</div>
                 <div class="comp-content">
-                    <h4>Desenvolvimento Full-Stack</h4>
-                    <p>Plataformas de gerenciamento centralizadas que transformam dados brutos de sensores em dashboards intuitivos e insights acionáveis para o usuário final.</p>
+                    <h4 data-i18n="comp-04-title">Desenvolvimento Full-Stack</h4>
+                    <p data-i18n="comp-04-p">Plataformas de gerenciamento centralizadas que transformam dados brutos de sensores em dashboards intuitivos e insights acionáveis para o usuário final.</p>
                 </div>
             </div>
 
         </div>
 
         <div class="comp-footer reveal-up">
-            <p>Acredito que a tecnologia deve ser acessível e robusta. Meu objetivo é continuar desenvolvendo ferramentas que democratizem o acesso à inovação — transformando a complexidade técnica em soluções simples e eficientes.</p>
+            <p data-i18n="comp-footer-p">Acredito que a tecnologia deve ser acessível e robusta. Meu objetivo é continuar desenvolvendo ferramentas que democratizem o acesso à inovação — transformando a complexidade técnica em soluções simples e eficientes.</p>
         </div>
 
     </div>
@@ -165,12 +187,12 @@
         <div class="footer-inner">
             <div class="footer-brand">Victor.Dev</div>
             <div class="footer-links">
-                <a href="projetos.html">Projetos</a>
-                <a href="contato.html">Contato</a>
+                <a href="projetos.html" data-i18n="footer-projetos">Projetos</a>
+                <a href="contato.html" data-i18n="footer-contato">Contato</a>
                 <a href="https://github.com" target="_blank">GitHub</a>
                 <a href="https://linkedin.com" target="_blank">LinkedIn</a>
             </div>
-            <div class="footer-copy">© 2025 — Feito com ♥</div>
+            <div class="footer-copy" data-i18n="footer-copy">© 2025 — Feito com ♥</div>
         </div>
     </div>
 </foot>

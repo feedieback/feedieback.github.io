@@ -9,6 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    .lang-toggle-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.25);
+        color: inherit;
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 4px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        line-height: 1;
+    }
+    .lang-toggle-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+    .navbar.scrolled .lang-toggle-btn { border-color: rgba(0,0,0,0.2); }
+    .lang-item { display: flex; align-items: center; margin-left: 6px; }
+    </style>
 </head>
 
 <body>
@@ -26,10 +45,13 @@
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html#inicio">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="projetos.html">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#inicio" data-i18n="nav-inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre" data-i18n="nav-sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="projetos.html" data-i18n="nav-projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html" data-i18n="nav-contato">Contato</a></li>
+                    <li class="nav-item lang-item">
+                        <button class="lang-toggle-btn" aria-label="Switch to English" title="Switch to English">EN</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -44,9 +66,9 @@
         <div class="grid-overlay"></div>
     </div>
     <div class="container">
-        <div class="section-label reveal-up">// projetos</div>
-        <h1 class="page-title reveal-up delay-1">Trabalhos<br>selecionados.</h1>
-        <p class="page-sub reveal-up delay-2">Uma curadoria dos projetos que mais me orgulho.</p>
+        <div class="section-label reveal-up" data-i18n="page-label-proj">// projetos</div>
+        <h1 class="page-title reveal-up delay-1" data-i18n="page-title-proj">Trabalhos<br>selecionados.</h1>
+        <p class="page-sub reveal-up delay-2" data-i18n="page-sub-proj">Uma curadoria dos projetos que mais me orgulho.</p>
     </div>
 </section>
 
@@ -58,18 +80,18 @@
         <div class="projeto-featured reveal-up">
             <div class="projeto-featured-meta">
                 <span class="projeto-num">01</span>
-                <span class="projeto-tag">Full Stack</span>
+                <span class="projeto-tag" data-i18n="proj-feat-tag">Full Stack</span>
             </div>
             <div class="projeto-featured-body">
-                <h2>Sistema Inteligente de Monitoramento Agrícola</h2>
-                <p>Um sistema de baixo custo baseado em IoT e Visão Computacional para monitoramento de microclima e detecção automática de pragas.</p>
+                <h2 data-i18n="proj-feat-title">Sistema Inteligente de Monitoramento Agrícola</h2>
+                <p data-i18n="proj-feat-p">Um sistema de baixo custo baseado em IoT e Visão Computacional para monitoramento de microclima e detecção automática de pragas.</p>
                 <div class="projeto-techs">
                     <span>Em Desenvolvimento</span><span>IA</span><span>Computer Vision</span><span>IOT</span><span>Python</span><span>PHP</span>
                 </div>
             </div>
             <div class="projeto-featured-actions">
-                <a href="tcc.html" class="btn-primary-custom">Ver projeto <span class="arrow">→</span></a>
-                <a href="https://github.com/feedieback/TCC" class="btn-ghost-custom">GitHub</a>
+                <a href="tcc.html" class="btn-primary-custom" data-i18n="proj-feat-btn">Ver projeto <span class="arrow">→</span></a>
+                <a href="https://github.com/feedieback/TCC" class="btn-ghost-custom" data-i18n="proj-feat-gh">GitHub</a>
             </div>
         </div>
 
@@ -81,8 +103,8 @@
                     <span class="projeto-num">02</span>
                     <span class="projeto-tag">Full Stack</span>
                 </div>
-                <h3>Detecção de Mosca-Branca (Trialeurodes vaporariorum)</h3>
-                <p>Um sistema de Visão Computacional otimizado para a detecção de pequenos insetos em armadilhas adesivas em cultivos de tomate.</p>
+                <h3 data-i18n="proj-02-title">Detecção de Mosca-Branca (Trialeurodes vaporariorum)</h3>
+                <p data-i18n="proj-02-p">Um sistema de Visão Computacional otimizado para a detecção de pequenos insetos em armadilhas adesivas em cultivos de tomate.</p>
                 <div class="projeto-techs">
                     <span>Concluido</span><span>Python</span><span>YOLOv8</span><span>OpenCV</span>
                 </div>
@@ -96,8 +118,8 @@
                     <span class="projeto-num">03</span>
                     <span class="projeto-tag">Full Stack</span>
                 </div>
-                <h3>Sistema de Detecção de Fadiga de Motoristas</h3>
-                <p>Este projeto implementa um sistema em Python que detecta automaticamente sinais de fadiga em motoristas, utilizando visão computacional, redes neurais convolucionais (CNN) e lógica fuzzy tipo 2.</p>
+                <h3 data-i18n="proj-03-title">Sistema de Detecção de Fadiga de Motoristas</h3>
+                <p data-i18n="proj-03-p">Este projeto implementa um sistema em Python que detecta automaticamente sinais de fadiga em motoristas, utilizando visão computacional, redes neurais convolucionais (CNN) e lógica fuzzy tipo 2.</p>
                 <div class="projeto-techs">
                     <span>Python</span><span>OpenCV</span><
                 </div>
@@ -111,8 +133,8 @@
                     <span class="projeto-num">04</span>
                     <span class="projeto-tag">Full Stack</span>
                 </div>
-                <h3>Dashboard para Sistema de Monitoramento Agrícola</h3>
-                <p>EProjeto de IoT voltado para automação e monitoramento de pequenas plantações, hortas urbanas e estufas, utilizando sensores de baixo custo e um microcontrolador ESP32.</p>
+                <h3 data-i18n="proj-04-title">Dashboard para Sistema de Monitoramento Agrícola</h3>
+                <p data-i18n="proj-04-p">EProjeto de IoT voltado para automação e monitoramento de pequenas plantações, hortas urbanas e estufas, utilizando sensores de baixo custo e um microcontrolador ESP32.</p>
                 <div class="projeto-techs">
                     <span>Concluido</span><span>IOT</span><span>PHP</span><span>Arduino</span>
                 </div>
@@ -130,9 +152,9 @@
 <section class="cta-section">
     <div class="container">
         <div class="cta-inner reveal-up">
-            <h2>Tem um projeto em mente?</h2>
-            <p>Vamos trabalhar juntos e transformar sua ideia em realidade.</p>
-            <a href="contato.html" class="btn-primary-custom">Entrar em contato</a>
+            <h2 data-i18n="cta-title">Tem um projeto em mente?</h2>
+            <p data-i18n="cta-p">Vamos trabalhar juntos e transformar sua ideia em realidade.</p>
+            <a href="contato.html" class="btn-primary-custom" data-i18n="cta-btn">Entrar em contato</a>
         </div>
     </div>
 </section>
@@ -142,12 +164,12 @@
         <div class="footer-inner">
             <div class="footer-brand">Victor.Dev</div>
             <div class="footer-links">
-                <a href="projetos.html">Projetos</a>
-                <a href="contato.html">Contato</a>
+                <a href="projetos.html" data-i18n="footer-projetos">Projetos</a>
+                <a href="contato.html" data-i18n="footer-contato">Contato</a>
                 <a href="https://github.com" target="_blank">GitHub</a>
                 <a href="https://linkedin.com" target="_blank">LinkedIn</a>
             </div>
-            <div class="footer-copy">© 2025 — Feito com ♥</div>
+            <div class="footer-copy" data-i18n="footer-copy">© 2025 — Feito com ♥</div>
         </div>
     </div>
 </footer>

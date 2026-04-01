@@ -9,6 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    .lang-toggle-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.25);
+        color: inherit;
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 4px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        line-height: 1;
+    }
+    .lang-toggle-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+    .navbar.scrolled .lang-toggle-btn { border-color: rgba(0,0,0,0.2); }
+    .lang-item { display: flex; align-items: center; margin-left: 6px; }
+    </style>
 
 </head>
 
@@ -28,10 +47,13 @@
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav-inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre" data-i18n="nav-sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projetos.html" data-i18n="nav-projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link nav-cta" href="contato.html" data-i18n="nav-contato">Contato</a></li>
+                    <li class="nav-item lang-item">
+                        <button class="lang-toggle-btn" aria-label="Switch to English" title="Switch to English">EN</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,9 +63,9 @@
 <!-- BREADCRUMB -->
 <div class="breadcrumb-bar">
     <div class="container">
-        <a href="projetos.html">Projetos</a>
+        <a href="projetos.html" data-i18n="breadcrumb-proj">Projetos</a>
         <span class="breadcrumb-sep">›</span>
-        <span class="current">Sistema de Monitoramento</span>
+        <span class="current" data-i18n="breadcrumb-cur">Sistema de Monitoramento</span>
     </div>
 </div>
 
@@ -55,20 +77,20 @@
         <div class="grid-overlay"></div>
     </div>
     <div class="container">
-        <div class="section-label reveal-up">// projeto em destaque</div>
-        <h1 class="hero-title reveal-up delay-1">
+        <div class="section-label reveal-up" data-i18n="tcc-label">// projeto em destaque</div>
+        <h1 class="hero-title reveal-up delay-1" data-i18n="tcc-title">
             Sistema Inteligente<br>
             de <em>Monitoramento</em><br><em>
             Agrícola.</em>
         </h1>
-        <p class="page-sub reveal-up delay-2">
+        <p class="page-sub reveal-up delay-2" data-i18n="tcc-sub">
             Desenvolvimento de um protótipo funcional de baixo custo para agricultura de precisão, integrando sensores IoT e Redes Neurais para otimização do manejo em pequenas propriedades.
         </p>
         <div class="hero-actions reveal-up delay-3" style="margin-top: 40px;">
-            <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom">
+            <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom" data-i18n="tcc-btn-gh">
                 Ver no GitHub <span class="arrow">→</span>
             </a>
-            <a href="#detalhes" class="btn-ghost-custom">
+            <a href="#detalhes" class="btn-ghost-custom" data-i18n="tcc-btn-det">
                 Ver detalhes <span class="arrow">↓</span>
             </a>
         </div>
@@ -79,22 +101,22 @@
 <section id="detalhes" class="sobre-section">
     <div class="container">
 
-        <div class="section-label reveal-up">// sobre o projeto</div>
+        <div class="section-label reveal-up" data-i18n="tcc-label-sobre">// sobre o projeto</div>
 
         <div class="sobre-grid">
             <div class="sobre-text">
-                <h2 class="section-title reveal-up">
+                <h2 class="section-title reveal-up" data-i18n="tcc-sobre-title">
                     Um sistema completo<br>para <em>monitoramento inteligente.</em>
                 </h2>
-                <p class="reveal-up delay-1">
+                <p class="reveal-up delay-1" data-i18n="tcc-prob">
                     <em>O Problema:</em> Métodos tradicionais de inspeção visual e contagem manual de pragas são imprecisos e lentos, 
                     resultando em decisões tardias.
                 </p>
-                <p class="reveal-up delay-2">
+                <p class="reveal-up delay-2" data-i18n="tcc-sol">
                     <em>A Solução:</em> Uma solução modular que utiliza Edge Computing para processar dados localmente, 
                     oferecendo ferramentas acessíveis que antes eram restritas a grandes produtores.
                 </p>
-                <p class="reveal-up delay-3">
+                <p class="reveal-up delay-3" data-i18n="tcc-imp">
                     <em>Impacto Social:</em> Foco no fortalecimento da agricultura familiar, tornando-a mais 
                     competitiva e sustentável através da tecnologia.
                 </p>
@@ -118,7 +140,7 @@
 <section class="features-section">
     <div class="container">
 
-    <div class="section-label reveal-up">// funcionalidades</div>
+    <div class="section-label reveal-up" data-i18n="tcc-label-feat">// funcionalidades</div>
 
     <!-- CARDS -->
     <div class="row g-4" id="features-cards">
@@ -126,24 +148,24 @@
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="1">
                 <div class="feature-icon">🌱</div>
-                <h5>Monitoramento de Solo e Ambiente</h5>
-                <p>Detecção e análise automática da qualidade do solo e ambiente.</p>
+                <h5 data-i18n="tcc-feat1-title">Monitoramento de Solo e Ambiente</h5>
+                <p data-i18n="tcc-feat1-p">Detecção e análise automática da qualidade do solo e ambiente.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="2">
                 <div class="feature-icon">🐜</div>
-                <h5>Detecção Automática de Pragas</h5>
-                <p>Identificação e contagem automática de pragas através de visão computacional.    </p>
+                <h5 data-i18n="tcc-feat2-title">Detecção Automática de Pragas</h5>
+                <p data-i18n="tcc-feat2-p">Identificação e contagem automática de pragas através de visão computacional.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="feature-card reveal-up" data-feature="3">
                 <div class="feature-icon">✙</div>
-                <h5>Análise da Saúde da Vegetação</h5>
-                <p>Monitoramento visual da saúde da vegetação e geração de mapas de saúde.</p>
+                <h5 data-i18n="tcc-feat3-title">Análise da Saúde da Vegetação</h5>
+                <p data-i18n="tcc-feat3-p">Monitoramento visual da saúde da vegetação e geração de mapas de saúde.</p>
             </div>
         </div>
 
@@ -159,7 +181,7 @@
 <section class="preview-section">
     <div class="container">
 
-        <div class="section-label reveal-up">// preview</div>
+        <div class="section-label reveal-up" data-i18n="tcc-label-prev">// preview</div>
 
         <div class="row g-4">
             <div class="col-md-6 reveal-up">
@@ -204,13 +226,13 @@
 <section class="projeto-cta">
     <div class="container">
         <div class="projeto-cta-inner reveal-up">
-            <h2>Gostou do projeto?</h2>
-            <p>Explore o código ou entre em contato para conversar sobre ele.</p>
+            <h2 data-i18n="tcc-cta-title">Gostou do projeto?</h2>
+            <p data-i18n="tcc-cta-p">Explore o código ou entre em contato para conversar sobre ele.</p>
             <div class="cta-buttons">
-                <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom">
+                <a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" class="btn-primary-custom" data-i18n="tcc-cta-gh">
                     Acessar repositório <span class="arrow">→</span>
                 </a>
-                <a href="contato.html" class="btn-ghost-custom">
+                <a href="contato.html" class="btn-ghost-custom" data-i18n="tcc-cta-conv">
                     Vamos conversar
                 </a>
             </div>
@@ -224,12 +246,12 @@
         <div class="footer-inner">
             <div class="footer-brand">Victor.Dev</div>
             <div class="footer-links">
-                <a href="projetos.html">Projetos</a>
-                <a href="contato.html">Contato</a>
+                <a href="projetos.html" data-i18n="footer-projetos">Projetos</a>
+                <a href="contato.html" data-i18n="footer-contato">Contato</a>
                 <a href="https://github.com" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/victor-augusto-de-oliveira-435b703ab/" target="_blank">LinkedIn</a>
             </div>
-            <div class="footer-copy">© 2025 — Feito com ♥</div>
+            <div class="footer-copy" data-i18n="footer-copy">© 2025 — Feito com ♥</div>
         </div>
     </div>
 </footer>
