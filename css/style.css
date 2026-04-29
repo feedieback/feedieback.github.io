@@ -306,8 +306,9 @@ body::before {
     margin-bottom: 28px;
 }
 
-.hero-title em {
-    font-style: normal;
+.hero-title em,
+.page-title em {
+    font-style: normal !important;
     color: transparent;
     background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
     -webkit-background-clip: text;
